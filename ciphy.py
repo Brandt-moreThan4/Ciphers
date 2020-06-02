@@ -14,7 +14,7 @@ def reverse(string_input):
 
 
 def caesar_encrypt(message, key):
-    """Encrypt a message with the provided key"""
+    """Encrypt a message with the provided key using Caesar Cipher method."""
     LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     message = message.upper()
     encrypted_message = ''
