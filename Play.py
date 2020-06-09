@@ -1,6 +1,12 @@
 import ciphy
+import os
+import time
+import pyautogui as auto
+import word_patterns
 
-message = ciphy.caesar_encrypt('Hi my name is brandy', key=3)
-print(message)
 
-
+# while True:
+#     auto.move(300, 0, duration=.75)
+#     auto.move(0, 300, duration=.75)
+#     auto.move(-300, 0, duration=.75)
+#     auto.move(0, -300, duration=.75)

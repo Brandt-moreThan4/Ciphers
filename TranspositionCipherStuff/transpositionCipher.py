@@ -1,6 +1,9 @@
 import math
 import random as rd
 import sys
+import  os
+
+import ciphy
 
 
 def encrypt_message(message, key):
@@ -35,9 +38,45 @@ def decrypt_message(secret_message, key):
     return ''.join(decrypted_grid)
 
 
-def main():
-    pass
+def hack_transposition(text):
+    """Try to decrypt using a shit tone of different keys and hope one looks
+        like it might be intelligible"""
+    print(f'About to try to hack. There are {len(text)} possible keys.')
+    for key in range(1, len(text)):
+        print(f'Trying key: {key}')
+        decrypted_text = decrypt_message(text, key)
+        if ciphy.is_english(decrypted_text):
+            print(f'We may have a match!')
+            print(f'How does this looks?\n{decrypted_text[:150]}')
+            response = input('\nY for yes. Press enter to keep exploring>>')
+            if response.strip().upper() == 'Y':
+                return decrypted_text
+    return None
+
+
+def brute_force_hack():
+    print(f'cd = {os.getcwd()}')
+    text = """Cb b rssti aieih rooaopbrtnsceee er es no npfgcwu plri
+ch nitaalr eiuengiteehb(e1 hilincegeoamn fubehgtarndcstudmd nM eu eacBoltaetee
+oinebcdkyremdteghn.aa2r81a condari fmps" tad l t oisn sit u1rnd stara nvhn fs
+edbh ee,n e necrg6 8nmisv l nc muiftegiitm tutmg cm shSs9fcie ebintcaets h a
+ihda cctrhe ele 1O7 aaoem waoaatdahretnhechaopnooeapece9etfncdbgsoeb uuteitgna.
+rteoh add e,D7c1Etnpneehtn beete" evecoal lsfmcrl iu1cifgo ai. sl1rchdnheev sh
+meBd ies e9t)nh,htcnoecplrrh ,ide hmtlme. pheaLem,toeinfgn t e9yce da' eN eMp a
+ffn Fc1o ge eohg dere.eec s nfap yox hla yon. lnrnsreaBoa t,e eitsw il ulpbdofg
+BRe bwlmprraio po droB wtinue r Pieno nc ayieeto'lulcih sfnc ownaSserbereiaSm
+-eaiah, nnrttgcC maciiritvledastinideI nn rms iehn tsigaBmuoetcetias rn"""
+
+    with open('franky.encrypted.txt') as f:
+        text = f.read()
+
+    hacked_message = hack_transposition(text)
+    if hacked_message is None:
+        print('Guess you were not able to hack it')
+    else:
+        print(f'Nice!! The hacked message is:\n{hacked_message}')
 
 
 if __name__ == '__main__':
-    main()
+    pass
+    #brute_force_hack()

@@ -10,12 +10,12 @@ import sys
 import transpositionCipher as tc
 
 
-def main():
+def franky_test():
     input_file_path = 'Franky.txt'
     # input_file_path = 'franky.encrypted.txt'
     key = 7
 
-    encrypting = input('(E)ncrypting or (D)ecrypting?')
+    encrypting = input('(E)ncrypting or (D)ecrypting?\n')
     if encrypting.lower().startswith('e'):
         encrypting = True
     else:
@@ -47,4 +47,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    franky_test()
