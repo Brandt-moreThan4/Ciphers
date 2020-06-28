@@ -59,9 +59,9 @@ def load_dictionary():
         Note: dictionary text file must be in the cd
     """
 
-    file_path_words = 'dictionary.txt'
+    file_path = find_file('dictionary.txt')
     word_dictionary = {}
-    with open(file_path_words) as f:
+    with open(file_path) as f:
         for line in f:
             word = line.strip()
             word_dictionary[word] = None
